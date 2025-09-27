@@ -4,23 +4,26 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Contact = () => {
-  const form = useRef();
+  const form = useRef(null);
   const [isSent, setIsSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const sendEmail = (e) => {
     e.preventDefault();
+    setLoading(true);
 
     emailjs
       .sendForm(
-        "service_axbtt7a",  // Replace with your EmailJS Service ID
-        "template_1ziboq3",  // Replace with your EmailJS Template ID
+        "service_dvs4w1r",   // Replace with your EmailJS Service ID
+        "template_ycg9wza",  // Replace with your EmailJS Template ID
         form.current,
-        "Rz7W9pVF0HdDryNNL"  // Replace with your EmailJS Public Key
+        "hoK3R4YqQWhxRdeyp"  // Replace with your EmailJS Public Key
       )
       .then(
         () => {
+          setLoading(false);
           setIsSent(true);
-          form.current.reset(); // Reset form fields after sending
+          form.current.reset();
           toast.success("Message sent successfully! ✅", {
             position: "top-right",
             autoClose: 3000,
@@ -32,6 +35,7 @@ const Contact = () => {
           });
         },
         (error) => {
+          setLoading(false);
           console.error("Error sending message:", error);
           toast.error("Failed to send message. Please try again.", {
             position: "top-right",
@@ -51,7 +55,6 @@ const Contact = () => {
       id="contact"
       className="flex flex-col items-center justify-center py-24 px-[12vw] md:px-[7vw] lg:px-[20vw]"
     >
-      {/* Toast Container */}
       <ToastContainer />
 
       {/* Section Title */}
@@ -69,7 +72,15 @@ const Contact = () => {
           Connect With Me <span className="ml-1">🚀</span>
         </h3>
 
-        <form ref={form} onSubmit={sendEmail} className="mt-4 flex flex-col space-y-4">
+        {loading && (
+          <p className="text-purple-400 text-center mt-3">Sending email... ⏳</p>
+        )}
+
+        <form
+          ref={form}
+          onSubmit={sendEmail}
+          className="mt-4 flex flex-col space-y-4"
+        >
           <input
             type="email"
             name="user_email"
@@ -98,13 +109,18 @@ const Contact = () => {
             required
             className="w-full p-3 rounded-md bg-[#131025] text-white border border-gray-600 focus:outline-none focus:border-purple-500"
           />
-          
+
           {/* Send Button */}
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-purple-600 to-pink-500 py-3 text-white font-semibold rounded-md hover:opacity-90 transition"
+            disabled={loading}
+            className={`w-full py-3 text-white font-semibold rounded-md transition ${
+              loading
+                ? "bg-gray-500 cursor-not-allowed"
+                : "bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-90"
+            }`}
           >
-            Send
+            {loading ? "Sending..." : "Send"}
           </button>
         </form>
       </div>
