@@ -46,7 +46,7 @@ import vpsLogo from './assets/education_logo/svm1.jpg';
 // Project Section Logo's
 import githubdetLogo from './assets/work_logo/github_det.png';
 import csprepLogo from './assets/work_logo/abc.png';
-import movierecLogo from './assets/work_logo/movie_rec.png';
+import movierecLogo from './assets/work_logo/ecom.png';
 import taskremLogo from './assets/work_logo/task_rem.png';
 import npmLogo from './assets/work_logo/abcd.png';
 import webverLogo from './assets/work_logo/web_dig.png';
@@ -226,16 +226,16 @@ export const SkillsInfo = [
       github: "https://github.com/Vikasya85450/wanderlust",
       webapp: "https://wanderlust-mt76.onrender.com/listings",
      },
-    // {
-    //   id: 2,
-    //   title: "Movie Recommendation App",
-    //   description:
-    //     "A React-based web application that provides movie recommendations based on different criteria, such as genres, user preferences, and popular trends. The intuitive design and smooth experience make it a go-to app for movie enthusiasts.",
-    //   image: movierecLogo,
-    //   tags: ["React JS", "API", "HTML", "CSS", "JavaScript"],
-    //   github: "https://github.com/codingmastr/Movie-Recommendation-App",
-    //   webapp: "https://movie-recommendation-app-jet.vercel.app/",
-    // },
+    {
+      id: 2,
+      title: "SnapBasket",
+      description:
+        "SnapBasket is a MERN stack e-commerce web application that allows users to browse products, add items to cart, and place orders securely. It features user authentication, product management, and an admin dashboard with a responsive and user-friendly interface..",
+      image: movierecLogo,
+      tags: ["React JS", "Nodejs", "Expressjs", "mongoDb", "JavaScript"],
+      github: "https://github.com/Vikasya85450/ecommerce",
+      webapp: "https://movie-recommendation-app-jet.vercel.app/",
+    },
     {
       id: 3,
       title: "Room Sathi",
